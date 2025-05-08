@@ -108,7 +108,7 @@ defmodule AshCloak.Transformers.SetupEncryption do
             %{
               action
               | arguments: [argument | Enum.reject(action.arguments, &(&1.name == attr.name))],
-                changes: [change | action.changes],
+                changes: action.changes ++ [change],
                 accept: new_accept
             },
             &(&1.name == action.name)
